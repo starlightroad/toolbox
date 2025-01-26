@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { ArrowUpRightIcon } from "lucide-react";
 import { fetchAllUtilities } from "../data/utility";
 
@@ -30,7 +31,7 @@ function UtilitiesList() {
             key={listItem.id}
             className="group rounded-xl border border-gray-200 shadow-sm transition-colors hover:border-gray-300 hover:shadow-md"
           >
-            <a href={listItem.href} className="block p-6">
+            <Link to={listItem.href} className="block p-6">
               <h2 className="mb-2 text-xl font-medium text-gray-900">
                 {listItem.label}
               </h2>
@@ -40,7 +41,7 @@ function UtilitiesList() {
                   <ArrowUpRightIcon size={20} />
                 </div>
               </div>
-            </a>
+            </Link>
           </li>
         );
       })}
