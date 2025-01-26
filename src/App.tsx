@@ -1,9 +1,10 @@
-import Navbar from "./components/navbar";
+import { Route, Routes } from "react-router";
+import HomePage from "./pages/home-page";
 
 export default function App() {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <Routes>
+      <Route index element={<HomePage />} />
+    </Routes>
   );
 }
