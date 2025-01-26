@@ -1,28 +1,21 @@
 import { ArrowUpRightIcon } from "lucide-react";
-import Navbar from "../components/navbar";
-import Layout from "../components/layout";
 import { fetchAllUtilities } from "../data/utility";
 
 export default function HomePage() {
   return (
-    <div>
-      <Navbar />
-      <Layout>
-        <main className="py-8 sm:py-14">
-          <article>
-            <header>
-              <h1 className="text-4xl font-semibold">Toolbox</h1>
-              <p className="mt-2 mb-8 text-gray-500">
-                A collection of web-based utilities I have developed.
-              </p>
-            </header>
-            <section>
-              <UtilitiesList />
-            </section>
-          </article>
-        </main>
-      </Layout>
-    </div>
+    <main className="py-8 sm:py-14">
+      <article>
+        <header>
+          <h1 className="text-4xl font-semibold">Toolbox</h1>
+          <p className="mt-2 mb-8 text-gray-500">
+            A collection of web-based utilities I have developed.
+          </p>
+        </header>
+        <section>
+          <UtilitiesList />
+        </section>
+      </article>
+    </main>
   );
 }
 

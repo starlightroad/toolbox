@@ -1,3 +1,14 @@
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <div className="mx-auto max-w-5xl px-5">{children}</div>;
+import { Outlet } from "react-router";
+import Container from "./container";
+import Navbar from "./navbar";
+
+export default function Layout() {
+  return (
+    <>
+      <Navbar />
+      <Container>
+        <Outlet />
+      </Container>
+    </>
+  );
 }
