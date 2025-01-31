@@ -4,9 +4,9 @@ import {
   type SetStateAction,
   useState,
 } from "react";
-import { getUnits } from "../data/db";
+import { fetchAllUnits } from "../data/unit";
 
-export const initialUnits = getUnits();
+export const initialUnits = fetchAllUnits();
 
 export const UnitsContext = createContext(initialUnits);
 
