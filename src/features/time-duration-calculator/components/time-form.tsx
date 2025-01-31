@@ -10,7 +10,7 @@ export default function TimeForm({
 }: {
   onError: Dispatch<SetStateAction<boolean>>;
 }) {
-  const [units, dispatch] = useUnits();
+  const { setUnits, calculateUnits } = useUnits();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,35 +45,14 @@ export default function TimeForm({
         Math.abs(newEndTime.valueOf() - newStartTime.valueOf()) /
         MILLISECONDS.PER_SECOND;
 
-      dispatch(calculateTime(ms));
+      setUnits(calculateUnits(ms));
     } else {
       onError(true);
-      dispatch(initialUnits);
+      setUnits(initialUnits);
     }
   };
 
-  const handleReset = () => dispatch(initialUnits);
-
-  const calculateTime = (ms: number): typeof units => {
-    const milliseconds = ms;
-    const { SECONDS } = TIME;
-
-    // Calculate Days
-    const days = ms / SECONDS.PER_DAY;
-
-    // Calculate Hours
-    const hours = ms / SECONDS.PER_HOUR;
-
-    // Calculate Minutes
-    const minutes = ms / SECONDS.PER_MINUTE;
-
-    return {
-      milliseconds,
-      minutes: minutes.toString().includes(".") ? +minutes.toFixed(2) : minutes,
-      hours: hours.toString().includes(".") ? +hours.toFixed(2) : hours,
-      days: days.toString().includes(".") ? +days.toFixed(2) : days,
-    };
-  };
+  const handleReset = () => setUnits(initialUnits);
 
   const formFields = [
     {

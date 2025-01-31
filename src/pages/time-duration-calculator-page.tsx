@@ -10,7 +10,7 @@ export default function TimeDurationCalculatorPage() {
   const utility = fetchUtilityById("ul-1")!;
   const pageTitle = utility.label;
 
-  const [units] = useUnits();
+  const { units } = useUnits();
   const showCalculations = units.milliseconds > 0;
 
   const [error, setError] = useState(false);
