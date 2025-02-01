@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router";
 import Code from "../components/ui/code";
+import { ROUTES } from "../lib/constants";
 
 export default function NotFoundPage() {
   const params = useParams();
-  const unknownRoute = params["*"];
+  const unknownRoute = params[ROUTES.NOT_FOUND];
 
   return (
     <main className="py-8 sm:py-14">
@@ -13,7 +14,7 @@ export default function NotFoundPage() {
           The page <Code>{unknownRoute}</Code> could not be found.
         </p>
         <Link
-          to="/"
+          to={ROUTES.HOME}
           className="inline-block rounded-md bg-gray-100 px-4 py-2 text-sm font-medium transition-colors hover:bg-amber-300"
         >
           Back to Home
