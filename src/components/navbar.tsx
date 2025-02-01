@@ -1,9 +1,9 @@
-import { Link } from "react-router";
-import { ContainerIcon, MoreVerticalIcon, X } from "lucide-react";
+import { MoreVerticalIcon, X } from "lucide-react";
 import githubLogo from "../assets/github.svg";
 import { DEVELOPER_EMAIL, GITHUB_REPO_URL } from "../lib/constants";
 import MobileNav from "./mobile-nav";
 import useDisclosure from "../hooks/use-disclosure";
+import AppLogo from "./app-logo";
 
 export default function Navbar() {
   const { open, toggleOpen } = useDisclosure();
@@ -19,10 +19,7 @@ export default function Navbar() {
       <nav className="h-full">
         <ul className="flex h-full items-center justify-between">
           <li>
-            <Link to="/" className="flex items-center gap-2 text-white">
-              <ContainerIcon size={20} />
-              <span className="text-sm font-medium">toolbox</span>
-            </Link>
+            <AppLogo />
           </li>
           <li className="sm:hidden">
             <button
