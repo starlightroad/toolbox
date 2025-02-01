@@ -7,6 +7,7 @@ import {
   MIN_UUID_COUNT,
 } from "../lib/constants";
 import DownloadButton from "./download-button";
+import GenerateButton from "./generate-button";
 
 export default function GenerateIdForm({
   setError,
@@ -73,12 +74,7 @@ export default function GenerateIdForm({
           Enter a number between {MIN_UUID_COUNT} and {MAX_UUID_COUNT}.
         </p>
         <div className="space-y-4">
-          <button
-            type="submit"
-            className="block h-10 w-full rounded-lg border border-amber-300 bg-amber-300 text-sm font-medium focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:outline-none sm:col-span-2 md:col-span-1"
-          >
-            Generate
-          </button>
+          <GenerateButton />
           <DownloadButton />
         </div>
       </fieldset>
