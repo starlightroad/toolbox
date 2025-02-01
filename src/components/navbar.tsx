@@ -1,9 +1,17 @@
 import { Link } from "react-router";
-import { ContainerIcon, MoreVerticalIcon } from "lucide-react";
+import { ContainerIcon, MoreVerticalIcon, X } from "lucide-react";
 import githubLogo from "../assets/github.svg";
 import { GITHUB_REPO_URL } from "../lib/constants";
+import MobileNav from "./mobile-nav";
+import useDisclosure from "../hooks/use-disclosure";
 
 export default function Navbar() {
+  const { open, toggleOpen } = useDisclosure();
+
+  const onToggleMobileNav = () => {
+    toggleOpen();
+  };
+
   return (
     <header className="h-14 bg-gray-950 px-5">
       <nav className="h-full">
@@ -15,9 +23,14 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="sm:hidden">
-            <button className="flex h-9 w-9 items-center justify-center rounded-md transition-colors hover:bg-white/10">
-              <MoreVerticalIcon size={18} className="text-white" />
+            <button
+              onClick={onToggleMobileNav}
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-white/10"
+            >
+              {open && <X size={18} className="text-white" />}
+              {!open && <MoreVerticalIcon size={18} className="text-white" />}
             </button>
+            {open && <MobileNav />}
           </li>
           <li className="col-span-2 hidden sm:list-item">
             <ul className="flex items-center gap-2">
