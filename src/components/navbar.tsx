@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ContainerIcon, MoreVerticalIcon, X } from "lucide-react";
 import githubLogo from "../assets/github.svg";
-import { GITHUB_REPO_URL } from "../lib/constants";
+import { DEVELOPER_EMAIL, GITHUB_REPO_URL } from "../lib/constants";
 import MobileNav from "./mobile-nav";
 import useDisclosure from "../hooks/use-disclosure";
 
@@ -11,6 +11,8 @@ export default function Navbar() {
   const onToggleMobileNav = () => {
     toggleOpen();
   };
+
+  const feedbackLink = `mailto:${DEVELOPER_EMAIL}`;
 
   return (
     <header className="h-14 bg-gray-950 px-5">
@@ -36,7 +38,7 @@ export default function Navbar() {
             <ul className="flex items-center gap-2">
               <li>
                 <a
-                  href="mailto:hello@gerardoortiz.dev"
+                  href={feedbackLink}
                   rel="noreferrer"
                   className="block rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-white/90"
                 >

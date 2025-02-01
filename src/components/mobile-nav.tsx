@@ -1,12 +1,14 @@
-import { GITHUB_REPO_URL } from "../lib/constants";
+import { DEVELOPER_EMAIL, GITHUB_REPO_URL } from "../lib/constants";
 
 export default function MobileNav() {
+  const feedbackLink = `mailto:${DEVELOPER_EMAIL}`;
+
   return (
     <nav className="absolute top-14 left-0 z-1 h-[calc(100%-56px)] w-full bg-white py-4 sm:hidden">
       <ul className="flex flex-col gap-1">
         <li>
           <a
-            href="mailto:hello@gerardoortiz.dev"
+            href={feedbackLink}
             rel="noreferrer"
             className="block w-full rounded-md px-4 py-3 font-medium text-gray-500 transition-colors hover:text-gray-900"
           >
