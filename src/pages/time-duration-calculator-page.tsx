@@ -5,6 +5,14 @@ import TimeForm from "../features/time-duration-calculator/components/time-form"
 import ResultsCard from "../features/time-duration-calculator/components/results-card";
 import useUnits from "../features/time-duration-calculator/hooks/use-units";
 import ErrorMessage from "../components/error-message";
+import type { Metadata } from "../lib/definitions";
+import { APP_METADATA } from "../lib/constants";
+import PageMetadata from "../components/page-metadata";
+
+const metadata: Metadata = {
+  title: "",
+  description: "",
+};
 
 export default function TimeDurationCalculatorPage() {
   const utility = fetchUtilityById("ul-1")!;
@@ -15,24 +23,31 @@ export default function TimeDurationCalculatorPage() {
 
   const [error, setError] = useState(false);
 
+  // Update page metadata
+  metadata.title = `${pageTitle} - ${APP_METADATA.NAME}`;
+  metadata.description = utility.description;
+
   return (
-    <main className="py-8 sm:py-14">
-      <article>
-        <header>
-          <h1 className="text-4xl font-semibold">{pageTitle}</h1>
-          <p className="mt-2 mb-8 text-gray-500">{utility.description}</p>
-        </header>
-        <section>
-          {error && (
-            <ErrorMessage message="Each field must be in the following format: MM/DD/YYYY HH:SS" />
-          )}
-          <TimeForm onError={setError} />
-        </section>
-        <section>{showCalculations && <ResultsCard />}</section>
-        <section>
-          <div className="mt-4">{showCalculations && <ResetButton />}</div>
-        </section>
-      </article>
-    </main>
+    <>
+      <PageMetadata title={metadata.title} description={metadata.description} />
+      <main className="py-8 sm:py-14">
+        <article>
+          <header>
+            <h1 className="text-4xl font-semibold">{pageTitle}</h1>
+            <p className="mt-2 mb-8 text-gray-500">{utility.description}</p>
+          </header>
+          <section>
+            {error && (
+              <ErrorMessage message="Each field must be in the following format: MM/DD/YYYY HH:SS" />
+            )}
+            <TimeForm onError={setError} />
+          </section>
+          <section>{showCalculations && <ResultsCard />}</section>
+          <section>
+            <div className="mt-4">{showCalculations && <ResetButton />}</div>
+          </section>
+        </article>
+      </main>
+    </>
   );
 }
