@@ -35,7 +35,7 @@ export default function TimeForm({
 
       if (newEndTime.toString() === "Invalid Date") {
         // Generate today's date and add user-defined time
-        newStartTime = createDate(`${getDateInDateStringFormat()} ${endTime}`);
+        newEndTime = createDate(`${getDateInDateStringFormat()} ${endTime}`);
       }
 
       onError(false);
