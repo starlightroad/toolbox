@@ -8,3 +8,15 @@ export const ROUTES = {
   TIME_DURATION_CALLCULATOR: "/time-duration-calculator",
   RANDOM_ID_GENERATOR: "/random-id-generator",
 };
+
+export const APP_METADATA = {
+  NAME: "Toolbox",
+  DESCRIPTION: "A collection of web-based utilities I have developed.",
+  KEYWORDS: [
+    "web tools",
+    "online utilities",
+    "developer tools",
+    "free web utilities",
+    "online calculators",
+  ],
+};
