@@ -6,6 +6,7 @@ import {
   MAX_UUID_COUNT,
   MIN_UUID_COUNT,
 } from "../lib/constants";
+import DownloadButton from "./download-button";
 
 export default function GenerateIdForm({
   setError,
@@ -78,12 +79,7 @@ export default function GenerateIdForm({
           >
             Generate
           </button>
-          <button
-            type="button"
-            className="block h-10 w-full rounded-lg border border-gray-300 bg-white text-sm font-medium text-gray-900 focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:outline-none sm:col-span-2 md:col-span-1"
-          >
-            Download
-          </button>
+          <DownloadButton />
         </div>
       </fieldset>
     </form>
