@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: toolbox_web_prod
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - 4173:4173
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - web_data_prod:/usr/share/nginx/html
+volumes:
+  web_data_prod:
