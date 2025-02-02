@@ -8,3 +8,9 @@ export type Utility = {
   description: string;
   href: RelativeURL;
 };
+
+export type Metadata = {
+  title: string;
+  description: string;
+  keywords?: string[];
+};

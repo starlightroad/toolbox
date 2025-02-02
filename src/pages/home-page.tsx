@@ -1,22 +1,38 @@
 import { Link } from "react-router";
 import { ArrowUpRightIcon } from "lucide-react";
 import { fetchAllUtilities } from "../data/utility";
+import type { Metadata } from "../lib/definitions";
+import PageMetadata from "../components/page-metadata";
+import { APP_METADATA } from "../lib/constants";
+
+const metadata: Metadata = {
+  title: `${APP_METADATA.NAME} - A Collection of Free Web-Based Utilities`,
+  description: APP_METADATA.DESCRIPTION,
+  keywords: APP_METADATA.KEYWORDS,
+};
 
 export default function HomePage() {
   return (
-    <main className="py-8 sm:py-14">
-      <article>
-        <header>
-          <h1 className="text-4xl font-semibold">Toolbox</h1>
-          <p className="mt-2 mb-8 text-gray-500">
-            A collection of web-based utilities I have developed.
-          </p>
-        </header>
-        <section>
-          <UtilitiesList />
-        </section>
-      </article>
-    </main>
+    <>
+      <PageMetadata
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+      />
+      <main className="py-8 sm:py-14">
+        <article>
+          <header>
+            <h1 className="text-4xl font-semibold">Toolbox</h1>
+            <p className="mt-2 mb-8 text-gray-500">
+              A collection of web-based utilities I have developed.
+            </p>
+          </header>
+          <section>
+            <UtilitiesList />
+          </section>
+        </article>
+      </main>
+    </>
   );
 }
 
