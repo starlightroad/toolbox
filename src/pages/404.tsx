@@ -6,7 +6,7 @@ import PageMetadata from "../components/page-metadata";
 
 const metadata: Metadata = {
   title: `Page Not Found - ${APP_METADATA.NAME}`,
-  description: "",
+  description: "The page you have requested could not be found.",
 };
 
 export default function NotFoundPage() {
