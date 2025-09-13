@@ -22,6 +22,8 @@ export default function TimeDurationCalculatorPage() {
   const showCalculations = units.milliseconds > 0;
 
   const [error, setError] = useState(false);
+  const errorMessage =
+    "Failed to perform calculation. Make sure each field is in the following formats: MM/DD/YYYY HH:SS or HH:SS or HH:SS AM|PM.";
 
   // Update page metadata
   metadata.title = `${pageTitle} - ${APP_METADATA.NAME}`;
@@ -37,9 +39,7 @@ export default function TimeDurationCalculatorPage() {
             <p className="mt-2 mb-8 text-gray-500">{utility.description}</p>
           </header>
           <section>
-            {error && (
-              <ErrorMessage message="Each field must be in the following format: MM/DD/YYYY HH:SS" />
-            )}
+            {error && <ErrorMessage message={errorMessage} />}
             <TimeForm onError={setError} />
           </section>
           <section>{showCalculations && <ResultsCard />}</section>
