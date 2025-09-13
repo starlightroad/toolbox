@@ -38,13 +38,19 @@ export default function TimeForm({
         newEndTime = createDate(`${getDateInDateStringFormat()} ${endTime}`);
       }
 
-      onError(false);
-
       const { MILLISECONDS } = TIME;
+
       const ms =
-        Math.abs(newEndTime.valueOf() - newStartTime.valueOf()) /
+        (newEndTime.valueOf() - newStartTime.valueOf()) /
         MILLISECONDS.PER_SECOND;
 
+      if (ms <= 0) {
+        onError(true);
+        setUnits(initialUnits);
+        return;
+      }
+
+      onError(false);
       setUnits(calculateUnits(ms));
     } else {
       onError(true);
