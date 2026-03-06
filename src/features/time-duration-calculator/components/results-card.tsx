@@ -4,8 +4,14 @@ import useUnits from "../hooks/use-units";
 export default function ResultsCard() {
   const { units, createUnitValue, createUnitValues } = useUnits();
 
-  const resultTextValue = useMemo(() => createUnitValue(units), [units]);
-  const resultUnitValues = useMemo(() => createUnitValues(units), [units]);
+  const resultTextValue = useMemo(
+    () => createUnitValue(units),
+    [units, createUnitValue],
+  );
+  const resultUnitValues = useMemo(
+    () => createUnitValues(units),
+    [units, createUnitValues],
+  );
 
   return (
     <div className="mt-4 w-full rounded-xl bg-black/80">
