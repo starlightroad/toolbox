@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import type { Units } from "../lib/definitions";
-import {
-  UnitsContext,
-  UnitsDispatchContext,
-} from "../providers/units-provider";
 import { TIME } from "../lib/constants";
 import { pluralize } from "../lib/utils";
+import { fetchAllUnits } from "../data/unit";
+
+export const initialUnits = fetchAllUnits();
+
+export const UnitsContext = createContext(initialUnits);
+
+export const UnitsDispatchContext = createContext<
+  Dispatch<SetStateAction<typeof initialUnits>>
+>(() => {});
 
 export default function useUnits() {
   const units = useContext(UnitsContext);
