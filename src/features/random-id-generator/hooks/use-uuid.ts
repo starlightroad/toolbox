@@ -1,6 +1,22 @@
-import { useContext } from "react";
+import {
+  createContext,
+  useContext,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
+import { DEFAULT_UUID_COUNT } from "../lib/constants";
 import { createArray, generateRandomUUID } from "../lib/utils";
-import { UUIDContext, UUIDDispatchContext } from "../providers/uuid-provider";
+
+export const initialState = {
+  uuids: createArray(DEFAULT_UUID_COUNT).map(() => generateRandomUUID()),
+  uuidCount: DEFAULT_UUID_COUNT,
+};
+
+export const UUIDContext = createContext(initialState);
+
+export const UUIDDispatchContext = createContext<
+  Dispatch<SetStateAction<typeof initialState>>
+>(() => {});
 
 export default function useUUID() {
   const { uuids, uuidCount } = useContext(UUIDContext);
